@@ -1,0 +1,28 @@
+name: Environment Variables Demo
+
+on:
+  workflow_dispatch:
+
+env:
+  GLOBAL_VAR: "I am a workflow level variable"
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    env:
+      JOB_VAR: "I am a job level variable"
+
+    steps:
+      - name: Print Workflow and Job Variables
+        run: |
+          echo "Global: $GLOBAL_VAR"
+          echo "Job: $JOB_VAR"
+
+      - name: Step Level Variable Example
+        env:
+          STEP_VAR: "I am a step level variable"
+        run: |
+          echo "Global: $GLOBAL_VAR"
+          echo "Job: $JOB_VAR"
+          echo "Step: $STEP_VAR"
