@@ -1,0 +1,22 @@
+name: Artifact Storage Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create a text file
+        run: |
+          echo "Hello, this is a sample artifact file." > sample.txt
+
+      - name: Display file content
+        run: cat sample.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-artifact
+          path: sample.txt
